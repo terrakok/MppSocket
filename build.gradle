@@ -1,15 +1,25 @@
 plugins {
-    id 'org.jetbrains.kotlin.multiplatform' version '1.3.61'
+    id 'org.jetbrains.kotlin.multiplatform' version '1.4.0-rc'
+    id 'application' //JVM application
 }
+
 repositories {
     mavenCentral()
 }
 
+//JVM application
+version = "1.0"
+group = "sample"
+application {
+    mainClass = "sample.SampleJvmKt"
+}
+
 kotlin {
-    jvm()
+    jvm {
+        withJava() //JVM application
+    }
     js {
-        browser {
-        }
+        browser {}
     }
     macosX64("macos") {
         binaries {
@@ -19,23 +29,8 @@ kotlin {
         }
     }
     sourceSets {
-        commonMain {
-            dependencies {
-                implementation kotlin('stdlib-common')
-            }
-        }
-        jvmMain {
-            dependencies {
-                implementation kotlin('stdlib-jdk8')
-                implementation "com.squareup.okhttp3:okhttp:4.4.0"
-            }
-        }
-        jsMain {
-            dependencies {
-                implementation kotlin('stdlib-js')
-            }
-        }
-        macosMain {
+        jvmMain.dependencies {
+            implementation "com.squareup.okhttp3:okhttp:4.4.0"
         }
     }
 }
