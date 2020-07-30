@@ -1,3 +1,4 @@
 ## Kotlin MPP WebSocket.   
-Run macos native version: `./gradlew runDebugExecutableMacos`  
-Run JS browser version: `./gradlew jsBrowserRun`  
+ - Run JVM version: `./gradlew run`  
+ - Run macos native version: `./gradlew runDebugExecutableMacos`  
+ - Run JS browser version: `./gradlew jsBrowserRun`  
