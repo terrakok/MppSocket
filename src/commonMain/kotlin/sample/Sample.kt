@@ -3,7 +3,7 @@ package sample
 expect fun randomUUID(): String
 
 fun run() {
-    val socket = AppSocket("wss://echo.websocket.org")
+    val socket = AppSocket("ws://echo.websocket.events")
 
     var receivedCounter = 0
     socket.messageListener = { msg ->
@@ -13,13 +13,11 @@ fun run() {
     }
     socket.stateListener = { state ->
         println("STATE = $state")
-        when (state) {
-            AppSocket.State.CONNECTED -> {
-                repeat(3) {
-                    val msg = "MSG#${randomUUID()}"
-                    socket.send(msg)
-                    println("Sent: $msg")
-                }
+        if (state == AppSocket.State.CONNECTED) {
+            repeat(3) {
+                val msg = "MSG#${randomUUID()}"
+                socket.send(msg)
+                println("Sent: $msg")
             }
         }
     }

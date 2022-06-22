@@ -1,5 +1,5 @@
 plugins {
-    id 'org.jetbrains.kotlin.multiplatform' version '1.4.0-rc'
+    id 'org.jetbrains.kotlin.multiplatform' version '1.7.0'
     id 'application' //JVM application
 }
 
@@ -30,7 +30,7 @@ kotlin {
     }
     sourceSets {
         jvmMain.dependencies {
-            implementation "com.squareup.okhttp3:okhttp:4.4.0"
+            implementation "com.squareup.okhttp3:okhttp:4.10.0"
         }
     }
 }
